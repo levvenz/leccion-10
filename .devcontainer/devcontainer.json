@@ -1,27 +1,42 @@
+// Config options: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
 {
-    "name": "Quarto",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-    "features": {
-        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
-            "installChromium": true
-        },
-        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-            "packages": "libgtk-3-dev,libnotify-dev,libgconf-2-4,libnss3,libxss1,libasound2"
-        }
+  "name": "Quarto",
+  "image": "ghcr.io/rocker-org/devcontainer/r-ver:4.3",
+  // Add software
+  "features": {
+    // Required to test with knitr
+    // R package config: https://github.com/rocker-org/devcontainer-features/blob/main/src/r-rig/README.md
+    "ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+      "version": "none",
+      "installRMarkdown": true,
+      "installJupyterlab": true,
+      "installRadian": true
     },
-    "customizations": {
-  		// Configure properties specific to VS Code.
-  		"vscode": {
-  			"settings": {
-  				"workbench.iconTheme": "material-icon-theme"
-  			},
-  			// Add the IDs of extensions you want installed when the container is created.
-  			"extensions": [
-  				"flyfly6.terminal-in-status-bar",
-  				"PKief.material-icon-theme",
-  				"MS-vsliveshare.vsliveshare",
-          "quarto.quarto"
-  			]
-  		}
-  	}
+    // You may wish to switch prerelease to latest for stable development
+    // Quarto configuration : https://github.com/rocker-org/devcontainer-features/blob/main/src/quarto-cli/README.md
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+      "installTinyTex": true,
+      "version": "prerelease"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "r.rterm.linux": "/usr/local/bin/radian",
+        "r.bracketedPaste": true,
+        "r.plot.useHttpgd": true,
+        "[r]": {
+          "editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+        },
+        "workbench.iconTheme": "material-icon-theme"
+      },
+      // Enable a development set of extensions for Lua and Quarto
+      "extensions": [
+        "quarto.quarto", 
+        "flyfly6.terminal-in-status-bar",
+        "PKief.material-icon-theme",
+        "MS-vsliveshare.vsliveshare"
+      ]
+    }
+  }
 }
