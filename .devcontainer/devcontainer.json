@@ -35,7 +35,9 @@
         "quarto.quarto", 
         "flyfly6.terminal-in-status-bar",
         "PKief.material-icon-theme",
-        "MS-vsliveshare.vsliveshare"
+        "MS-vsliveshare.vsliveshare",
+        "ms-python.python",
+        "ms-toolsai.jupyter"
       ]
     }
   }
