@@ -1,0 +1,27 @@
+{
+    "name": "Quarto",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+            "installChromium": true
+        },
+        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+            "packages": "libgtk-3-dev,libnotify-dev,libgconf-2-4,libnss3,libxss1,libasound2"
+        }
+    },
+    "customizations": {
+  		// Configure properties specific to VS Code.
+  		"vscode": {
+  			"settings": {
+  				"workbench.iconTheme": "material-icon-theme"
+  			},
+  			// Add the IDs of extensions you want installed when the container is created.
+  			"extensions": [
+  				"flyfly6.terminal-in-status-bar",
+  				"PKief.material-icon-theme",
+  				"MS-vsliveshare.vsliveshare",
+          "quarto.quarto"
+  			]
+  		}
+  	}
+}
